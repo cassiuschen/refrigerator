@@ -1,0 +1,46 @@
+.ui.vertical.labeled.icon.menu.inverted.fixed_left
+  - 3.times
+    a.item
+      i.lab.icon
+      | 实验室
+
+.index.header
+  .ui.statistics
+    .statistic
+      .value
+        | {{dishes.results.length}}
+      .label
+        | 菜品
+    .statistic
+      .value
+        | {{testStep.results.length}}
+      .label
+        | 步骤
+.ui.active.dimmer ng-if="isLoading"
+  .ui.text.loader 正在连接到LeanCloud...
+.main-container.ui.grid
+  .four.wide.column
+    .ui.vertical.menu#mainSelector
+      .item
+        .ui.input
+          input type="text" ng-model="searchParams" placeholder="搜索"
+      a.item class="{{onClickId == dish.id ? 'active' : ''}}" ng-repeat="dish in dishes.results | filter:searchParams as results" ng-click="changeData(dish.objectId)"
+        | {{dish.title}} - {{$index}}
+  .twelve.wide.column#dataPreview
+    .ui.segment ng-if="detailLoaded"
+      .ui.vertical.segment
+        | {{DishInfo.des}}
+      .ui.vertical.segment
+        .ui.ordered.list.animated.large
+          .item ng-repeat="step in DishSteps.results | orderBy: step.order"
+            a.right.floated.compact.ui.button 修改
+            .content
+              .header
+                | {{step.content}}
+    .ui.segment.center ng-if="!detailLoaded"
+      h2.icon.ui.header
+        i.settings.icon
+        .content
+          | 随身厨房
+          .sub.header
+            | 点击左侧菜品以查看更多信息

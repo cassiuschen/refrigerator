@@ -1,0 +1,34 @@
+doctype html
+html lang="zh_cn" ng-app="KitchenApp"
+  head
+    meta charset="utf-8"
+    title Kitchen
+    script type="text/javascript" src="/js/jquery.js"
+    link rel="stylesheet" type="text/css" href="/css/semantic.css"
+    link rel="stylesheet" type="text/css" href="/assets/application.css"
+    script type="text/javascript" src="/js/semantic.js"
+    script type="text/javascript" src="/js/angular.js"
+    script type="text/javascript" src="/js/angular-cookies.js"
+    script type="text/javascript" src="/js/angular-route.js"
+    script type="text/javascript" src="/js/angular-resource.js"
+    script type="text/javascript" src="/js/angular-sanitize.js"
+    script type="text/javascript" src="/assets/application.js"
+    script type="text/javascript" src="/assets/services.js"
+    script type="text/javascript" src="/assets/controller.js"
+    meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"
+    meta http-equiv="X-UA-Compatible" content="IE=edge"
+    meta name="X-AVOSCloud-Application-Id" content="#{settings.AVOSAppId}"
+    meta name="X-AVOSCloud-Application-Key" content="#{settings.AVOSAppKey}"
+  body
+    .ui.menu.fixed_top
+      - 3.times
+        a.item
+          i.home.icon
+          | 首页
+      .right.menu
+        a.item
+          .ui.transparent.icon.input
+            input type="text" placeholder="CQL语句查询"
+            i.search.link.icon
+    /== yield
+    div ng-view="ng-view"
