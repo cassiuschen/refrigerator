@@ -38,8 +38,15 @@ window.Kitchen.config [
 window.BASE_URL = "https://leancloud.cn/1.1"
 
 
+window.base =
+	toggleNav : ->
+		$("#nav.ui.sidebar").first().sidebar 'attach events', '#navToggle', 'scale down'
+
+	Init : ->
+		window.base.toggleNav()
+
 # Others ==================================================
 $(document).ready ->
-
+	window.base.Init()
 
 window.onresize = ->

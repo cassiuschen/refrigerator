@@ -29,8 +29,8 @@ html, body {
 }
 
 body {
-  padding-top: 35px;
-  margin-left: 84px;
+  #padding-top: 35px;
+  #margin-left: 84px;
   //height: auto !important;
 }
 
@@ -66,22 +66,27 @@ $dataStatisticWidth: 150px; // 每一个数据框的宽度
     height: 100%;
     //position: fixed !important;
     //top: 0;
+    padding-bottom: 0 !important;
   }
   #selectorPreview {
     padding-right: 0;
-    z-index: 600;
+    z-index: 60;
   }
   #mainSelector {
     width: 100%;
     border-radius: 0px;
     height: 100%;
-    z-index: 600;
+    z-index: 60;
   }
   // 信息呈现框
   #dataPreview {
     //background-color: #ffffff;
-    z-index: 100;
+    z-index: 10;
     padding-left: 0;
+    background-image: url("/images/logo-01.png");
+    background-repeat: no-repeat;
+    background-position: center;
+
     .ui.list#steps {
       .item {
         a {
@@ -119,4 +124,11 @@ $dataStatisticWidth: 150px; // 每一个数据框的宽度
 .ui.buttons > .button:hover,
 .ui.buttons > .button.active {
   position: static !important;
+}
+
+@media only screen and (max-width: 760px) {
+  html {
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
 }

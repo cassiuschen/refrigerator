@@ -21,7 +21,8 @@ html lang="zh_cn" ng-app="KitchenApp"
     meta name="X-AVOSCloud-Application-Id" content="#{settings.AVOSAppId}"
     meta name="X-AVOSCloud-Application-Key" content="#{settings.AVOSAppKey}"
   body
-    .ui.menu.fixed_top
+    == slim :nav
+    /.ui.menu.fixed_top
       .item.teal
         | REFRIGERATOR
       a.item class="{{path == '/' ? 'active' : ''}}"
@@ -33,4 +34,4 @@ html lang="zh_cn" ng-app="KitchenApp"
             input type="text" placeholder="CQL语句查询"
             i.search.link.icon
     /== yield
-    div ng-view="ng-view" style="height: 100%;"
+    .pusher ng-view="ng-view" style="height: 100%;"

@@ -1,4 +1,4 @@
-.ui.vertical.labeled.icon.menu.inverted.fixed_left
+/.ui.vertical.labeled.icon.menu.inverted.fixed_left
   a.item class="{{path == '/' ? 'active' : ''}}"
     i.lab.icon
     | 菜品
@@ -6,23 +6,19 @@
     i.dribbble.icon
     | 专题
 
-/.index.header
-  .ui.statistics
-    .statistic
-      .value
-        | {{dishes.results.length}}
-      .label
-        | 菜品
-    .statistic
-      .value
-        | {{testStep.results.length}}
-      .label
-        | 步骤
-.ui.active.dimmer ng-if="isLoading"
+.ui.active.dimmer.inverted ng-if="isLoading"
   .ui.text.loader 正在连接到LeanCloud...
 .main-container.ui.grid
   .four.wide.column#selectorPreview
     .ui.vertical.pointing.menu#mainSelector
+      .item style="text-align:center;"
+        .ui.buttons
+          a.button.small.ui#navToggle onclick="window.base.toggleNav();"
+            i.content.icon
+            | 菜单
+          a.button.small.ui#createDish
+            i.add.icon
+            | 创建新菜品
       .item
         .ui.input
           input type="text" ng-model="searchParams" placeholder="搜索"
@@ -75,10 +71,5 @@
           .content
             .header
               | {{step.content}}
-    .ui.segment.center ng-if="!detailLoaded"
-      h2.icon.ui.header
-        i.settings.icon
-        .content
-          | 随身厨房
-          .sub.header
-            | 点击左侧菜品以查看更多信息
+
+== slim :dishEditor
