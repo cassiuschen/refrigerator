@@ -60,8 +60,11 @@
               });
               $('.ui.rating').rating("disable");
           .clearfix
-        .six.wide.center.aligned.column
+        .six.wide.center.aligned.column style="text-align:center;"
           img.ui.right.floated.rounded.medium.image src="{{DishThumb.results[0].file.url}}"
+          a.ui.labeled.icon.button.red#dishEditorToggle onclick="window.base.toggleDishEditor()"
+            i.write.icon
+            | 修改菜品信息
       h4.ui.horizontal.header.divider
         i.bar.chart.icon
         | 步骤
@@ -72,4 +75,3 @@
             .header
               | {{step.content}}
 
-== slim :dishEditor

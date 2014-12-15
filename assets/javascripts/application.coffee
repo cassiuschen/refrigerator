@@ -19,6 +19,7 @@ window.Kitchen.run [
 	($rs, $lc) ->
 		$rs.isLoading = true
 		$rs.path = $lc.path()
+		$rs.editDishInfo = {}
 ]
 
 # Route
@@ -42,8 +43,18 @@ window.base =
 	toggleNav : ->
 		$("#nav.ui.sidebar").first().sidebar 'attach events', '#navToggle', 'scale down'
 
+	toggleDishEditor : ->
+		$("#dishEditor").first().sidebar 'attach events', '#dishEditorToggle', 'scale down'
+		$('#dishEditor #rem').rating
+			initialRating: $('#dishEditor angularData').data("rating")
+			maxRating: 10
+		$('#dishEditor #dif').rating
+			initialRating: $('#dishEditor angularData').data("dif")
+			maxRating: 10
+
 	Init : ->
-		window.base.toggleNav()
+		#window.base.toggleNav()
+		#$('.ui.sidebar').sidebar()
 
 # Others ==================================================
 $(document).ready ->

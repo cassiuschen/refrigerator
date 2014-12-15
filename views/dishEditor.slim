@@ -1,0 +1,33 @@
+.ui.right.very.wide.sidebar.segment.scale.down#dishEditor style="z-index:800;"
+  h2.ui.header
+    i.write.icon
+    | {{editDishInfo.title || "新菜品"}}
+  .ui.form.warning
+    .field
+      label 菜名
+      input type="text" ng-model="editDishInfo.title" placeholder="菜名"
+    .field
+      label 描述
+      textarea ng-model="editDishInfo.des" placeholder="菜品描述"
+    .ui.divider
+    .ui.warning.message.visible
+      p
+        | 以下内容请用英文半角空格分隔多个词语。
+    .field
+      label 标签
+      input type="text" placeholder="输入标签..." ng-model="editDishInfo.tags"
+    .field
+      label 主料
+      input type="text" placeholder="输入标签..." ng-model="editDishInfo.mainM"
+    .field
+      label 辅料
+      input type="text" placeholder="输入标签..." ng-model="editDishInfo.subM"
+    .ui.divider
+    angularData data-rating="{{editDishInfo.recommendation || 0}}" data-dif="{{editDishInfo.difficulty || 0}}"
+    .fields
+      .field
+        label 推荐度
+        .ui.rating.star#rem data-rating="{{editDishInfo.recommendation || 0}}" data-max-rating="10"
+      .field
+        label 操作难度
+        .ui.rating.star#dif data-rating="{{editDishInfo.difficulty || 0}}" data-max-rating="10"

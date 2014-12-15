@@ -52,4 +52,12 @@ window.Kitchen
         }, () ->
           $rootScope.isLoading = false
           $scope.detailLoaded = true
+          $rootScope.editDishInfo =
+            title: $scope.DishInfo.title
+            des: $scope.DishInfo.des
+            tags: $scope.DishInfo.tags.join(" ")
+            mainM: $scope.DishInfo.mainMaterial
+            subM: $scope.DishInfo.subMaterial
+            recommendation: $scope.DishInfo.recommendation
+            difficulty: $scope.DishInfo.difficulty
   ]

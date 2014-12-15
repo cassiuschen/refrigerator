@@ -20,8 +20,9 @@ html lang="zh_cn" ng-app="KitchenApp"
     meta http-equiv="X-UA-Compatible" content="IE=edge"
     meta name="X-AVOSCloud-Application-Id" content="#{settings.AVOSAppId}"
     meta name="X-AVOSCloud-Application-Key" content="#{settings.AVOSAppKey}"
-  body
+  body.pushable
     == slim :nav
+    == slim :dishEditor
     /.ui.menu.fixed_top
       .item.teal
         | REFRIGERATOR
@@ -35,3 +36,4 @@ html lang="zh_cn" ng-app="KitchenApp"
             i.search.link.icon
     /== yield
     .pusher ng-view="ng-view" style="height: 100%;"
+
