@@ -1,10 +1,12 @@
 .ui.vertical.labeled.icon.menu.inverted.fixed_left
-  - 3.times
-    a.item
-      i.lab.icon
-      | 实验室
+  a.item class="{{path == '/' ? 'active' : ''}}"
+    i.lab.icon
+    | 菜品
+  a.item
+    i.dribbble.icon
+    | 专题
 
-.index.header
+/.index.header
   .ui.statistics
     .statistic
       .value
@@ -19,24 +21,60 @@
 .ui.active.dimmer ng-if="isLoading"
   .ui.text.loader 正在连接到LeanCloud...
 .main-container.ui.grid
-  .four.wide.column
-    .ui.vertical.menu#mainSelector
+  .four.wide.column#selectorPreview
+    .ui.vertical.pointing.menu#mainSelector
       .item
         .ui.input
           input type="text" ng-model="searchParams" placeholder="搜索"
-      a.item class="{{onClickId == dish.id ? 'active' : ''}}" ng-repeat="dish in dishes.results | filter:searchParams as results" ng-click="changeData(dish.objectId)"
-        | {{dish.title}} - {{$index}}
+      a.teal.item id="{{dish.objectId}}" class="{{onClickId == dish.objectId ? 'active' : ''}}" ng-repeat="dish in dishes.results | filter:searchParams as results" ng-click="changeData(dish.objectId)"
+        | {{dish.title}}
+        .ui.label.teal
+          | {{dish.objectId.substring(18,24)}}
   .twelve.wide.column#dataPreview
     .ui.segment ng-if="detailLoaded"
-      .ui.vertical.segment
-        | {{DishInfo.des}}
-      .ui.vertical.segment
-        .ui.ordered.list.animated.large
-          .item ng-repeat="step in DishSteps.results | orderBy: step.order"
-            a.right.floated.compact.ui.button 修改
-            .content
-              .header
-                | {{step.content}}
+      .ui.grid
+        .ten.wide.column
+          h1.ui.header
+            | {{DishInfo.title}}
+            a.ui.tag.tiny.label.red ng-repeat="tag in DishInfo.tags" style="margin-left: 15px;"
+              | {{tag}}
+            .sub.header
+              | {{DishInfo.des}}
+          h3.ui.dividing.header
+            | 主料
+          p
+            a.ui.horizontal.label ng-repeat="mainM in DishInfo.mainMaterial.split(' ')" ng-click="searchParams = mainM"
+              | {{mainM}}
+          h3.ui.dividing.header
+            | 辅料
+          p
+            a.ui.horizontal.label ng-repeat="subM in DishInfo.subMaterial.split(' ')" ng-click="searchParams = subM"
+              | {{subM}}
+          .ui.divided.horizontal.list
+            .item
+              | 推荐
+              .ui.star.rating#recDis data-rating="{{DishInfo.recommendation * 0.5}}" data-max-rating="5"
+            .item
+              | 制作难度
+              .ui.star.red.rating#difDis data-rating="{{DishInfo.recommendation * 0.5}}" data-max-rating="5"
+            javascript:
+              $('.ui.rating').rating({
+                initialRating: $(self).data("rating"),
+                maxRating: $(self).data("max-rating")
+              });
+              $('.ui.rating').rating("disable");
+          .clearfix
+        .six.wide.center.aligned.column
+          img.ui.right.floated.rounded.medium.image src="{{DishThumb.results[0].file.url}}"
+      h4.ui.horizontal.header.divider
+        i.bar.chart.icon
+        | 步骤
+      .ui.ordered.list.animated.large#steps
+        .item ng-repeat="step in DishSteps.results | orderBy: step.order"
+          a.right.floated.compact.ui.button 修改
+          .content
+            .header
+              | {{step.content}}
     .ui.segment.center ng-if="!detailLoaded"
       h2.icon.ui.header
         i.settings.icon

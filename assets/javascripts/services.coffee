@@ -41,7 +41,24 @@ window.KitchenServices
                   __type: "Pointer"
                   className: "Dish"
                   objectId: ""
-                key: "steps"
+                key: "step"
+        all:
+          method: "GET"
+  ]
+  .factory 'Images', [
+    "$resource"
+    ($resource) ->
+      $resource "#{window.BASE_URL}/classes/Image", {},
+        query:
+          method: 'GET'
+          params:
+            where:
+              $relatedTo:
+                object:
+                  __type: "Pointer"
+                  className: "Dish"
+                  objectId: ""
+                key: "thumb"
         all:
           method: "GET"
   ]

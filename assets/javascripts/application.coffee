@@ -15,8 +15,10 @@ window.Kitchen.config(["$httpProvider", (provider) ->
 
 window.Kitchen.run [
 	'$rootScope',
-	($rs) ->
+	'$location',
+	($rs, $lc) ->
 		$rs.isLoading = true
+		$rs.path = $lc.path()
 ]
 
 # Route

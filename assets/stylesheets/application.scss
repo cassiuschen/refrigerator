@@ -29,9 +29,9 @@ html, body {
 }
 
 body {
-  margin-top: 35px;
-  margin-left: 85px;
-  height: auto !important;
+  padding-top: 35px;
+  margin-left: 84px;
+  //height: auto !important;
 }
 
 .container {
@@ -61,15 +61,28 @@ $dataStatisticWidth: 150px; // 每一个数据框的宽度
 
 .main-container {
   // 主要信息选择器，如选择菜品
+  height: 100%;
+  .column {
+    height: 100%;
+    //position: fixed !important;
+    //top: 0;
+  }
+  #selectorPreview {
+    padding-right: 0;
+    z-index: 600;
+  }
   #mainSelector {
     width: 100%;
     border-radius: 0px;
+    height: 100%;
+    z-index: 600;
   }
   // 信息呈现框
   #dataPreview {
     //background-color: #ffffff;
-    margin-left: -10px;
-    .ui.list {
+    z-index: 100;
+    padding-left: 0;
+    .ui.list#steps {
       .item {
         a {
           opacity: 0;

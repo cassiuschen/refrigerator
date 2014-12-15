@@ -2,7 +2,8 @@ doctype html
 html lang="zh_cn" ng-app="KitchenApp"
   head
     meta charset="utf-8"
-    title Kitchen
+    title
+      | 冰箱 | REFRIGERATOR
     script type="text/javascript" src="/js/jquery.js"
     link rel="stylesheet" type="text/css" href="/css/semantic.css"
     link rel="stylesheet" type="text/css" href="/assets/application.css"
@@ -21,14 +22,15 @@ html lang="zh_cn" ng-app="KitchenApp"
     meta name="X-AVOSCloud-Application-Key" content="#{settings.AVOSAppKey}"
   body
     .ui.menu.fixed_top
-      - 3.times
-        a.item
-          i.home.icon
-          | 首页
+      .item.teal
+        | REFRIGERATOR
+      a.item class="{{path == '/' ? 'active' : ''}}"
+        i.home.icon
+        | 首页
       .right.menu
         a.item
           .ui.transparent.icon.input
             input type="text" placeholder="CQL语句查询"
             i.search.link.icon
     /== yield
-    div ng-view="ng-view"
+    div ng-view="ng-view" style="height: 100%;"
